@@ -37,4 +37,6 @@
     <MenuItem
         Clicked="OnMenuItemClicked"
         Text="Logout" />
+
+    
 </Shell>

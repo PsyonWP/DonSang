@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DonSang.Views.QuestionnairePage"
+             Title="Questionnaire"
+             BackgroundColor="#F5F5F5">
+
+	<ContentPage.Content>
+		<StackLayout Padding="20" Spacing="30" VerticalOptions="CenterAndExpand">
+
+			<Frame BackgroundColor="White" CornerRadius="10" Padding="15" HasShadow="True">
+				<Label Text="{Binding CurrentQuestion}"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="#D32F2F"
+                       HorizontalTextAlignment="Center" />
+			</Frame>
+
+			<StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+				<Button Text="Oui"
+                        FontSize="18"
+                        BackgroundColor="{Binding YesButtonColor}"
+                        TextColor="White"
+                        Command="{Binding SelectResponseCommand}"
+                        CommandParameter="Oui" />
+
+				<Button Text="Non"
+                        FontSize="18"
+                        BackgroundColor="{Binding NoButtonColor}"
+                        TextColor="White"
+                        Command="{Binding SelectResponseCommand}"
+                        CommandParameter="Non" />
+
+				<Button Text="Je ne sais pas"
+                        FontSize="18"
+                        BackgroundColor="{Binding DontKnowButtonColor}"
+                        TextColor="White"
+                        Command="{Binding SelectResponseCommand}"
+                        CommandParameter="Je ne sais pas" />
+			</StackLayout>
+
+			<Entry Placeholder="Complément de réponse (si applicable)"
+                   Text="{Binding CurrentResponse}"
+                   IsVisible="{Binding ShowTextBox}"
+                   BackgroundColor="#E0E0E0"
+                   TextColor="Black" />
+
+			<Button Text="Soumettre"
+                    FontSize="18"
+                    BackgroundColor="#D32F2F"
+                    TextColor="White"
+                    Command="{Binding SubmitResponseCommand}" />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

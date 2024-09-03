@@ -1,14 +1,17 @@
 <Project>
-    <PropertyGroup>
-        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-        <MauiVersion>8.0.80</MauiVersion>
-    </PropertyGroup>
-    <ItemGroup>
-        <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" Condition="'$(Configuration)' == 'Debug'" />
-        <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-        <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-        <PackageVersion Include="CommunityToolkit.Maui" Version="9.0.2" />
-        <PackageVersion Include="CommunityToolkit.Maui.Markup" Version="4.0.0" />
-        <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    </ItemGroup>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <MauiVersion>8.0.80</MauiVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" Condition="'$(Configuration)' == 'Debug'" />
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    <PackageVersion Include="CommunityToolkit.Maui" Version="9.0.2" />
+    <PackageVersion Include="CommunityToolkit.Maui.Markup" Version="4.0.0" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+  </ItemGroup>
 </Project>

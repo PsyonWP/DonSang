@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DonSang.Views.CreateAccountPage"
+             Title="Créer un compte"
+             BackgroundColor="#FFFFFF">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="20" VerticalOptions="CenterAndExpand">
+
+            <Label Text="Créer un compte"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#D32F2F" />
+
+            <!-- Champ Nom -->
+            <Entry Placeholder="Nom"
+                   x:Name="NomEntry"
+                   PlaceholderColor="#BDBDBD"
+                   TextColor="Black" />
+
+            <!-- Champ Prénom -->
+            <Entry Placeholder="Prénom"
+                   x:Name="PrenomEntry"
+                   PlaceholderColor="#BDBDBD"
+                   TextColor="Black" />
+
+            <!-- Champ Date de Naissance -->
+            <DatePicker x:Name="DateNaissancePicker"
+                        Format="D"
+                        TextColor="Black" />
+
+            <!-- Champ Email -->
+            <Entry Placeholder="Email"
+                   Keyboard="Email"
+                   x:Name="EmailEntry"
+                   PlaceholderColor="#BDBDBD"
+                   TextColor="Black" />
+
+            <!-- Champ Mot de Passe -->
+            <Entry Placeholder="Mot de passe"
+                   IsPassword="True"
+                   x:Name="PasswordEntry"
+                   PlaceholderColor="#BDBDBD"
+                   TextColor="Black" />
+
+            <!-- Champ Confirmation Mot de Passe -->
+            <Entry Placeholder="Confirmer le mot de passe"
+                   IsPassword="True"
+                   x:Name="ConfirmPasswordEntry"
+                   PlaceholderColor="#BDBDBD"
+                   TextColor="Black" />
+
+            <!-- Bouton Créer un compte -->
+            <Button Text="Créer un compte"
+                    FontSize="18"
+                    BackgroundColor="#D32F2F"
+                    TextColor="White"
+                    Clicked="OnCreateAccountClicked" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DonSang.Views.HomePage"
+             BackgroundColor="#FFFFFF" 
+             Title="Questionnaire dons du sang">
+
+    <ContentPage.Content>
+        <Grid VerticalOptions="CenterAndExpand" Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <Image Source="logo.png" HeightRequest="100" WidthRequest="100" />
+               
+                <Label Text="Questionnaire dons du sang"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="#D32F2F" />
+               
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Spacing="20">
+                <Button Text="Créer un compte"
+                        FontSize="18"
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        WidthRequest="200"
+                        CornerRadius="25"
+                        Clicked="OnCreateAccountClicked" />
+
+                <Button Text="Connexion"
+                        FontSize="18"
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        WidthRequest="200"
+                        CornerRadius="25"
+                        Clicked="OnLoginClicked" />
+            </StackLayout>
+
+            <!-- Cr�dits d�veloppeurs -->
+            <Label Grid.Row="3"
+                   Text="Développé par Yanis Chaabane et José Avondo"
+                   FontSize="14"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End"
+                   TextColor="#757575" />
+            <!-- Couleur grise discrete -->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,23 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
-    x:Class="DonSang.Views.LoginPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:DonSang"
-    xmlns:vm="clr-namespace:DonSang.ViewModels"
-    Shell.NavBarIsVisible="False"
-    x:DataType="vm:LoginViewModel"
-    mc:Ignorable="d">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DonSang.Views.LoginPage"
+             Title="Connexion"
+             BackgroundColor="#FFFFFF">
+
     <ContentPage.Content>
-        <StackLayout
-            HorizontalOptions="Center"
-            VerticalOptions="Center">
-            <Button
-                Command="{Binding LoginCommand}"
-                Style="{StaticResource PrimaryAction}"
-                Text="Login" />
+        <StackLayout Padding="20" Spacing="20" VerticalOptions="CenterAndExpand">
+
+            <Label Text="Connexion"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#D32F2F" />
+
+            <Entry Placeholder="Email"
+                   Keyboard="Email"
+                   x:Name="EmailEntry"
+                   PlaceholderColor="#BDBDBD"
+                   TextColor="Black" />
+
+            <Entry Placeholder="Mot de passe"
+                   IsPassword="True"
+                   x:Name="PasswordEntry"
+                   PlaceholderColor="#BDBDBD"
+                   TextColor="Black" />
+
+            <Button Text="Connexion"
+                    FontSize="18"
+                    BackgroundColor="#D32F2F"
+                    TextColor="White"
+                    Clicked="OnLoginClicked" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

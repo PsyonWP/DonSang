@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DonSang.context.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace DonSang
 {
@@ -16,18 +18,18 @@ namespace DonSang
                        fonts.AddFont("OpenSans-SemiBold.ttf", "OpenSansSemiBold");
                    });
 
+            // Configurer le contexte de la base de données
+            builder.Services.AddDbContext<DonSangYJContext>(options =>
+                options.UseSqlServer("Server = 192.168.29.13; User ID = sa; Password = erty64%; Database = DonSangYJ; TrustServerCertificate = True; "));
+
             builder.Services.AddSingleton<IDialogService, DialogService>();
             builder.Services.AddSingleton<INavigationService, NavigationService>();
-            builder.Services.AddSingleton<EventsViewModel>();
-            builder.Services.AddSingleton<EventsPage>();
-            builder.Services.AddSingleton<SearchViewModel>();
-            builder.Services.AddSingleton<SearchPage>();
-            builder.Services.AddSingleton<SettingsViewModel>();
-            builder.Services.AddSingleton<SettingsPage>();
-            builder.Services.AddTransient<LoginViewModel>();
+
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddTransient<CreateAccountPage>();
             builder.Services.AddTransient<LoginPage>();
-            builder.Services.AddTransient<NewEventViewModel>();
-            builder.Services.AddTransient<NewEventPage>();
+            builder.Services.AddTransient<HomePage>();
+
 
 #if DEBUG
             builder.Logging.AddDebug();

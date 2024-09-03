@@ -10,7 +10,6 @@
     Title="DonSang"
     mc:Ignorable="d">
 
-    <!-- Flyout items for navigation -->
     <FlyoutItem Title="Home">
         <ShellContent
             ContentTemplate="{DataTemplate vw:HomePage}"
@@ -29,14 +28,12 @@
             Route="login" />
     </FlyoutItem>
 
-    <!-- Optional TabBar (if needed) -->
     <TabBar>
         <ShellContent
             ContentTemplate="{DataTemplate vw:HomePage}"
             Route="home" />
     </TabBar>
 
-    <!-- Menu item for logout -->
     <MenuItem
         Clicked="OnMenuItemClicked"
         Text="Logout" />

@@ -43,14 +43,12 @@
                         Clicked="OnLoginClicked" />
             </StackLayout>
 
-            <!-- Cr�dits d�veloppeurs -->
             <Label Grid.Row="3"
                    Text="Développé par Yanis Chaabane et José Avondo"
                    FontSize="14"
                    HorizontalOptions="Center"
                    VerticalOptions="End"
                    TextColor="#757575" />
-            <!-- Couleur grise discrete -->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

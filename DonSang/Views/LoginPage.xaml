@@ -14,23 +14,26 @@
                    HorizontalOptions="Center"
                    TextColor="#D32F2F" />
 
+            <!-- Champ Email -->
             <Entry Placeholder="Email"
                    Keyboard="Email"
-                   x:Name="EmailEntry"
+                   Text="{Binding Email}"
                    PlaceholderColor="#BDBDBD"
                    TextColor="Black" />
 
+            <!-- Champ Mot de Passe -->
             <Entry Placeholder="Mot de passe"
                    IsPassword="True"
-                   x:Name="PasswordEntry"
+                   Text="{Binding Password}"
                    PlaceholderColor="#BDBDBD"
                    TextColor="Black" />
 
+            <!-- Bouton Connexion -->
             <Button Text="Connexion"
                     FontSize="18"
                     BackgroundColor="#D32F2F"
                     TextColor="White"
-                    Clicked="OnLoginClicked" />
+                    Command="{Binding LoginCommand}" />
 
         </StackLayout>
     </ContentPage.Content>

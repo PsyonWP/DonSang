@@ -16,39 +16,39 @@
 
             <!-- Champ Nom -->
             <Entry Placeholder="Nom"
-                   x:Name="NomEntry"
+                   Text="{Binding Nom}"
                    PlaceholderColor="#BDBDBD"
                    TextColor="Black" />
 
             <!-- Champ Prénom -->
             <Entry Placeholder="Prénom"
-                   x:Name="PrenomEntry"
+                   Text="{Binding Prenom}"
                    PlaceholderColor="#BDBDBD"
                    TextColor="Black" />
 
             <!-- Champ Date de Naissance -->
-            <DatePicker x:Name="DateNaissancePicker"
+            <DatePicker Date="{Binding DateNaissance}"
                         Format="D"
                         TextColor="Black" />
 
             <!-- Champ Email -->
             <Entry Placeholder="Email"
                    Keyboard="Email"
-                   x:Name="EmailEntry"
+                   Text="{Binding Email}"
                    PlaceholderColor="#BDBDBD"
                    TextColor="Black" />
 
             <!-- Champ Mot de Passe -->
             <Entry Placeholder="Mot de passe"
                    IsPassword="True"
-                   x:Name="PasswordEntry"
+                   Text="{Binding Password}"
                    PlaceholderColor="#BDBDBD"
                    TextColor="Black" />
 
             <!-- Champ Confirmation Mot de Passe -->
             <Entry Placeholder="Confirmer le mot de passe"
                    IsPassword="True"
-                   x:Name="ConfirmPasswordEntry"
+                   Text="{Binding ConfirmPassword}"
                    PlaceholderColor="#BDBDBD"
                    TextColor="Black" />
 
@@ -57,7 +57,7 @@
                     FontSize="18"
                     BackgroundColor="#D32F2F"
                     TextColor="White"
-                    Clicked="OnCreateAccountClicked" />
+                    Command="{Binding CreateAccountCommand}" />
 
         </StackLayout>
     </ContentPage.Content>

@@ -1,6 +1,5 @@
-﻿using Microsoft.Maui.Controls;
-using System;
-using DonSang.context.Models;
+﻿using DonSang.context.Models;
+using Microsoft.Maui.Controls;
 
 namespace DonSang.Views
 {
@@ -16,13 +15,13 @@ namespace DonSang.Views
 
         private async void OnCreateAccountClicked(object sender, EventArgs e)
         {
-            // Naviguer vers la page de création de compte en passant le contexte de base de données
+            // Naviguer vers la page de création de compte
             await Navigation.PushAsync(new CreateAccountPage(_dbContext));
         }
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
-            // Naviguer vers la page de connexion en passant le contexte de base de données
+            // Naviguer vers la page de connexion
             await Navigation.PushAsync(new LoginPage(_dbContext));
         }
     }

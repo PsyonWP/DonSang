@@ -28,8 +28,6 @@ FontSize="7"
 TextColor="Black" />
             </StackLayout>
             
-
-            <!-- Boutons pour le choix initial -->
             <StackLayout Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Spacing="20">
                 <Button Text="Je veux passer le test"
                         FontSize="18"
@@ -51,8 +49,6 @@ TextColor="Black" />
                 
             </StackLayout>
             
-            
-            <!-- Boutons Créer un compte et Connexion, cachés par défaut -->
             <StackLayout Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Spacing="20" IsVisible="{Binding IsPatientSectionVisible}">
                 <Button Text="Créer un compte"
                         FontSize="18"
@@ -71,7 +67,6 @@ TextColor="Black" />
                         Command="{Binding LoginCommand}" />
             </StackLayout>
 
-            <!-- Crédits en bas de page -->
             <Label Grid.Row="3"
                    Text="Développé par Yanis Chaabane et José Avondo"
                    FontSize="14"

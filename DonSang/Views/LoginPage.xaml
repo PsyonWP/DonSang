@@ -14,21 +14,18 @@
                    HorizontalOptions="Center"
                    TextColor="#D32F2F" />
 
-            <!-- Champ Email -->
             <Entry Placeholder="Email"
                    Keyboard="Email"
                    Text="{Binding Email}"
                    PlaceholderColor="#BDBDBD"
                    TextColor="Black" />
 
-            <!-- Champ Mot de Passe -->
             <Entry Placeholder="Mot de passe"
                    IsPassword="True"
                    Text="{Binding Password}"
                    PlaceholderColor="#BDBDBD"
                    TextColor="Black" />
 
-            <!-- Bouton Connexion -->
             <Button Text="Connexion"
                     FontSize="18"
                     BackgroundColor="#D32F2F"

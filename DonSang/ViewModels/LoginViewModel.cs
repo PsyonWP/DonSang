@@ -1,5 +1,5 @@
 ﻿using DonSang.context.Models;
-using DonSang.Helpers;  // Assurez-vous que cette directive using est présente
+using DonSang.Helpers; 
 using System.Windows.Input;
 
 namespace DonSang.ViewModels
@@ -43,10 +43,8 @@ namespace DonSang.ViewModels
             {
                 await Application.Current.MainPage.DisplayAlert("Succès", "Connexion réussie!", "OK");
 
-                // Stocker l'ID du donneur dans la session utilisateur
                 UserSession.DonneurId = user.IdDonneur;
 
-                // Naviguer vers StartQuestionnairePage avec le dbContext
                 await Application.Current.MainPage.Navigation.PushAsync(new StartQuestionnairePage(_dbContext));
             }
             else

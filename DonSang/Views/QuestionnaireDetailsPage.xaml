@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DonSang.ViewModels"
+             x:Class="DonSang.Views.QuestionnaireDetailsPage"
+             Title="D�tails du Questionnaire"
+             BackgroundColor="White">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="Questions � V�rifier"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Red" />
+
+            <CollectionView ItemsSource="{Binding ProblematicQuestions}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding IdQuestionNavigation.Enonce}" 
+                                  TextColor="Red" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

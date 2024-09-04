@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DonSang.ViewModels"
+             x:Class="DonSang.Views.ListeQuestionnairesPage"
+             Title="Liste des Questionnaires"
+             BackgroundColor="White">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="Questionnaires"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Red" />
+
+            <CollectionView ItemsSource="{Binding Questionnaires}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedQuestionnaire}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Button Text="{Binding Resultat}"
+                                TextColor="White"
+                                BackgroundColor="#D32F2F"
+                                Command="{Binding BindingContext.SelectQuestionnaireCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

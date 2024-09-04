@@ -14,7 +14,6 @@
                    HorizontalOptions="Center"
 				   TextColor="Red"/>
 
-			<!-- Entrées avec liaison de propriété -->
 			<Entry Placeholder="Nom d'utilisateur"
                    Text="{Binding Username}" 
 			       TextColor="black"/>
@@ -23,7 +22,6 @@
                    Text="{Binding Password}" 
 				   TextColor="black"/>
 
-			<!-- Bouton avec Commande -->
 			<Button Text="Se connecter"
                     FontSize="18"
                     BackgroundColor="#D32F2F"

@@ -1,4 +1,4 @@
-﻿using DonSang.context.Models; // Import du dbContext
+﻿using DonSang.context.Models; 
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
 using System.ComponentModel;
@@ -13,19 +13,19 @@ namespace DonSang.ViewModels
         private string _username;
         private string _password;
         private readonly INavigation _navigation;
-        private readonly DonSangYJContext _dbContext; // Ajout du dbContext
+        private readonly DonSangYJContext _dbContext; 
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // Constructeur avec INavigation et dbContext pour permettre la navigation
+        
         public DoctorLoginViewModel(INavigation navigation, DonSangYJContext dbContext)
         {
             _navigation = navigation;
-            _dbContext = dbContext; // Assigner le dbContext
-            DoctorLoginCommand = new Command(OnDoctorLogin); // Liaison de la commande
+            _dbContext = dbContext; 
+            DoctorLoginCommand = new Command(OnDoctorLogin); 
         }
 
-        // Propriétés bindables
+     
         public string Username
         {
             get => _username;
@@ -46,17 +46,16 @@ namespace DonSang.ViewModels
             }
         }
 
-        // Commande de connexion
+     
         public ICommand DoctorLoginCommand { get; }
 
-        // Méthode de connexion
         private async void OnDoctorLogin()
         {
             if (Username == DoctorUsername && Password == DoctorPassword)
             {
                 await Application.Current.MainPage.DisplayAlert("Succès", "Connexion réussie!", "OK");
 
-                // Naviguer vers la page ListeDonneursPage
+              
                 await _navigation.PushAsync(new Views.ListeDonneursPage(_dbContext));
             }
             else
@@ -65,7 +64,6 @@ namespace DonSang.ViewModels
             }
         }
 
-        // Méthode pour notifier les changements de propriété
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

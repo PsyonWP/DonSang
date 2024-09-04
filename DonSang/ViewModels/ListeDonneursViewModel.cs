@@ -1,8 +1,7 @@
-﻿using DonSang.context.Models;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Windows.Input;
+using DonSang.context.Models;
 using Microsoft.Maui.Controls;
+using System.Collections.ObjectModel;
 
 namespace DonSang.ViewModels
 {
@@ -10,10 +9,8 @@ namespace DonSang.ViewModels
     {
         private readonly DonSangYJContext _dbContext;
 
-        // Propriété Observable pour lister les DonneurViewModel au lieu des Donneurs bruts
         public ObservableCollection<DonneurViewModel> Donneurs { get; set; } = new ObservableCollection<DonneurViewModel>();
 
-        // Propriété pour le Donneur sélectionné
         private DonneurViewModel _selectedDonneur;
         public DonneurViewModel SelectedDonneur
         {
@@ -25,22 +22,31 @@ namespace DonSang.ViewModels
             }
         }
 
-        // Constructeur avec le dbContext
+        public ICommand SelectDonneurCommand { get; }
+
         public ListeDonneursViewModel(DonSangYJContext dbContext)
         {
             _dbContext = dbContext;
-            LoadDonneurs(); // Charger les donneurs dès l'initialisation
+            SelectDonneurCommand = new Command<DonneurViewModel>(OnSelectDonneur);
+
+            LoadDonneurs();
         }
 
-        // Charger les donneurs depuis la base de données
-        private async Task LoadDonneurs()
+        private void LoadDonneurs()
         {
-            var donneursFromDb = await Task.Run(() => _dbContext.Donneurs.ToList());
+            var donneursFromDb = _dbContext.Donneurs.ToList();
 
             foreach (var donneur in donneursFromDb)
             {
-                // Utilisez DonneurViewModel pour encapsuler chaque Donneur
                 Donneurs.Add(new DonneurViewModel(donneur));
+            }
+        }
+
+        private async void OnSelectDonneur(DonneurViewModel selectedDonneur)
+        {
+            if (selectedDonneur != null)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new Views.ListeQuestionnairesPage(_dbContext, selectedDonneur.Donneur));
             }
         }
     }

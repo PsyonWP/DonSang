@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DonSang.Views.ListeDonneursPage"
+             Title="Liste des Donneurs"
+             BackgroundColor="White">
+
+	<ContentPage.Content>
+		<StackLayout Padding="20">
+			<Label Text="Liste des Donneurs"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Red" />
+
+			<CollectionView ItemsSource="{Binding Donneurs}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedDonneur}">
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<!-- Lier à la propriété NomPrenom dans DonneurViewModel -->
+						<Button Text="{Binding NomPrenom}" TextColor="White" BackgroundColor="#D32F2F"/>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

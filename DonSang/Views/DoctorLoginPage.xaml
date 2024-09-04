@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DonSang.ViewModels"
+             x:Class="DonSang.Views.DoctorLoginPage"
+             Title="Connexion Médecin"
+			 BackgroundColor="white">
+
+	<ContentPage.Content>
+		<StackLayout Padding="20" VerticalOptions="CenterAndExpand" Spacing="15">
+			<Label Text="Accès Médecin"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+				   TextColor="Red"/>
+
+			<!-- Entrées avec liaison de propriété -->
+			<Entry Placeholder="Nom d'utilisateur"
+                   Text="{Binding Username}" 
+			       TextColor="black"/>
+			<Entry Placeholder="Mot de passe"
+                   IsPassword="True"
+                   Text="{Binding Password}" 
+				   TextColor="black"/>
+
+			<!-- Bouton avec Commande -->
+			<Button Text="Se connecter"
+                    FontSize="18"
+                    BackgroundColor="#D32F2F"
+                    TextColor="White"
+                    Command="{Binding DoctorLoginCommand}" />
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

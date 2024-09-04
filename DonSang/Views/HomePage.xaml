@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DonSang.ViewModels"
              x:Class="DonSang.Views.HomePage"
-             BackgroundColor="#FFFFFF" 
-             Title="Questionnaire dons du sang">
-             
+             BackgroundColor="#FFFFFF"
+             Title="Questionnaire Don du Sang">
 
     <ContentPage.Content>
         <Grid VerticalOptions="CenterAndExpand" Padding="20">
@@ -17,23 +17,50 @@
 
             <StackLayout Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
                 <Image Source="logo.png" HeightRequest="100" WidthRequest="100" />
-               
-                <Label Text="Questionnaire dons du sang"
+
+                <Label Text="Questionnaire Don du Sang"
                        FontSize="24"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
                        TextColor="#D32F2F" />
-               
+                <Label Text="&#x0a;"
+FontSize="7"
+TextColor="Black" />
             </StackLayout>
+            
 
+            <!-- Boutons pour le choix initial -->
             <StackLayout Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Spacing="20">
+                <Button Text="Je veux passer le test"
+                        FontSize="18"
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        WidthRequest="300"
+                        CornerRadius="25"
+                        Command="{Binding ShowPatientSectionCommand}" />
+                
+                
+
+                <Button Text="Je suis médecin"
+                        FontSize="18"
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        WidthRequest="300"
+                        CornerRadius="25"
+                        Command="{Binding ShowDoctorLoginCommand}" />
+                
+            </StackLayout>
+            
+            
+            <!-- Boutons Créer un compte et Connexion, cachés par défaut -->
+            <StackLayout Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Spacing="20" IsVisible="{Binding IsPatientSectionVisible}">
                 <Button Text="Créer un compte"
                         FontSize="18"
                         BackgroundColor="#D32F2F"
                         TextColor="White"
                         WidthRequest="200"
                         CornerRadius="25"
-                        Clicked="OnCreateAccountClicked" />
+                        Command="{Binding CreateAccountCommand}" />
 
                 <Button Text="Connexion"
                         FontSize="18"
@@ -41,9 +68,10 @@
                         TextColor="White"
                         WidthRequest="200"
                         CornerRadius="25"
-                        Clicked="OnLoginClicked" />
+                        Command="{Binding LoginCommand}" />
             </StackLayout>
 
+            <!-- Crédits en bas de page -->
             <Label Grid.Row="3"
                    Text="Développé par Yanis Chaabane et José Avondo"
                    FontSize="14"

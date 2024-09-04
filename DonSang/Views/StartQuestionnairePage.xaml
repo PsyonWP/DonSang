@@ -16,7 +16,7 @@
             <StackLayout Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
                 <Image Source="logo.png" HeightRequest="100" WidthRequest="100" />
 
-                <Label Text="Questionnaire dons du sang"
+                <Label Text="Questionnaire Don du Sang"
                        FontSize="24"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
@@ -28,7 +28,7 @@
                         FontSize="18"
                         BackgroundColor="#D32F2F"
                         TextColor="White"
-                        WidthRequest="200"
+                        WidthRequest="300"
                         CornerRadius="25"
                         Command="{Binding StartQuestionnaireCommand}" />
             </StackLayout>

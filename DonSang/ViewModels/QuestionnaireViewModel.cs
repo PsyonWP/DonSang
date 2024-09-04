@@ -66,7 +66,7 @@ namespace DonSang.ViewModels
                     YesButtonColor = "#388E3C"; // Vert
                     break;
                 case "Non":
-                    NoButtonColor = "#D32F2F"; // Rouge
+                    NoButtonColor = "#701818"; // Rouge
                     break;
                 case "Je ne sais pas":
                     DontKnowButtonColor = "#FBC02D"; // Jaune
@@ -140,34 +140,85 @@ namespace DonSang.ViewModels
 
         private async void EvaluateDonationEligibility()
         {
-            // Charger les questions éliminatoires en mémoire
+            // Charger les questions éliminatoires et non-éliminatoires en mémoire
             var questionIdsEliminatory = _questions
                 .Where(q => q.Eliminatoire == true)
                 .Select(q => q.IdQuestion)
                 .ToList();
 
-            // Filtrer les réponses en utilisant les IDs des questions éliminatoires
-            var eliminatoryAnswers = _dbContext.Reponses
-                .Where(r => questionIdsEliminatory.Contains(r.IdQuestion.Value))
+            var nonEliminatoryQuestions = _questions
+                .Where(q => q.Eliminatoire == false || q.Eliminatoire == null)
+                .Select(q => q.IdQuestion)
                 .ToList();
 
+            // Filtrer les réponses en utilisant les IDs des questions
+            var eliminatoryAnswers = _dbContext.Reponses
+                .Where(r => questionIdsEliminatory.Contains(r.IdQuestion.Value) && r.IdDonneur == UserSession.DonneurId.Value)
+                .ToList();
+
+            var nonEliminatoryYesAnswers = _dbContext.Reponses
+                .Where(r => nonEliminatoryQuestions.Contains(r.IdQuestion.Value) && r.IdDonneur == UserSession.DonneurId.Value && r.Reponse1 == true)
+                .ToList();
+
+            var dontKnowAnswers = _dbContext.Reponses
+                .Where(r => r.IdDonneur == UserSession.DonneurId.Value && r.Reponse1 == null)
+                .ToList();
+
+            // Pour déboguer, vérifier les réponses récupérées
+            Console.WriteLine($"Eliminatory answers: {eliminatoryAnswers.Count}");
+            Console.WriteLine($"Non-eliminatory Yes answers: {nonEliminatoryYesAnswers.Count}");
+            Console.WriteLine($"Don't know answers: {dontKnowAnswers.Count}");
+
             string message;
+            string resultat;
 
             // Vérifier les réponses aux questions éliminatoires
             if (eliminatoryAnswers.Any(r => r.Reponse1 == true))
             {
                 // Si l'utilisateur a répondu "Oui" à une question éliminatoire
                 message = "Don impossible.";
+                resultat = "Infaisable";
+            }
+            // Vérifier si des réponses "Je ne sais pas" existent
+            else if (dontKnowAnswers.Any())
+            {
+                message = "Dépend de l'entretien.";
+                resultat = "À vérifier";
+            }
+            // Vérifier si des réponses "Oui" aux questions non-éliminatoires existent
+            else if (nonEliminatoryYesAnswers.Any())
+            {
+                message = "Dépend de l'entretien.";
+                resultat = "À vérifier";
             }
             else
             {
-                // Si l'utilisateur a répondu "Non" à toutes les questions éliminatoires
+                // Si l'utilisateur a répondu "Non" à toutes les questions
                 message = "Don faisable.";
+                resultat = "Faisable";
             }
 
+            // Enregistrer le résultat du questionnaire dans la table Questionnaire
+            var questionnaire = new Questionnaire
+            {
+                IdDonneur = UserSession.DonneurId.Value,
+                DateRemplissage = DateTime.Now,
+                Statut = "Fini", // Questionnaire terminé
+                Resultat = resultat
+            };
+
+            // Ajouter le questionnaire à la base de données
+            _dbContext.Questionnaires.Add(questionnaire);
+            _dbContext.SaveChanges();
+
+            // Afficher le résultat à l'utilisateur
             await Application.Current.MainPage.DisplayAlert("Résultat", message, "OK");
 
+            // Retourner à la page d'accueil ou une autre page
             await Application.Current.MainPage.Navigation.PopToRootAsync();
         }
+
+
+
     }
 }

@@ -140,37 +140,28 @@ namespace DonSang.ViewModels
 
         private async void EvaluateDonationEligibility()
         {
-            // Charger les questions en mémoire
+            // Charger les questions éliminatoires en mémoire
             var questionIdsEliminatory = _questions
                 .Where(q => q.Eliminatoire == true)
                 .Select(q => q.IdQuestion)
                 .ToList();
 
-            var questionIdsRisk = _questions
-                .Where(q => q.Categorie == "Donneur à risque")
-                .Select(q => q.IdQuestion)
-                .ToList();
-
-            // Filtrer les réponses en utilisant les IDs chargés en mémoire
+            // Filtrer les réponses en utilisant les IDs des questions éliminatoires
             var eliminatoryAnswers = _dbContext.Reponses
-                .Where(r => questionIdsEliminatory.Contains(r.IdQuestion.Value) && r.Reponse1 == true)
-                .ToList();
-
-            var riskAnswers = _dbContext.Reponses
-                .Where(r => questionIdsRisk.Contains(r.IdQuestion.Value) && r.Reponse1 == true)
+                .Where(r => questionIdsEliminatory.Contains(r.IdQuestion.Value))
                 .ToList();
 
             string message;
-            if (eliminatoryAnswers.Any())
+
+            // Vérifier les réponses aux questions éliminatoires
+            if (eliminatoryAnswers.Any(r => r.Reponse1 == true))
             {
+                // Si l'utilisateur a répondu "Oui" à une question éliminatoire
                 message = "Don impossible.";
-            }
-            else if (riskAnswers.Any())
-            {
-                message = "Dépend de l'entretien.";
             }
             else
             {
+                // Si l'utilisateur a répondu "Non" à toutes les questions éliminatoires
                 message = "Don faisable.";
             }
 

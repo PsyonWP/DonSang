@@ -8,7 +8,8 @@
     xmlns:local="clr-namespace:DonSang"
     xmlns:vw="clr-namespace:DonSang.Views"
     Title="DonSang"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Shell.NavBarIsVisible="False">
 
     <FlyoutItem Title="Home">
         <ShellContent

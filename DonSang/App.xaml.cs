@@ -1,10 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DonSang.context.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DonSang
 {
     public partial class App : Application
     {
-        public App()
+        public App(DonSangYJContext dbContext)
         {
             InitializeComponent();
 

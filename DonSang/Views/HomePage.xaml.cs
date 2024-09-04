@@ -13,6 +13,7 @@ namespace DonSang.Views
             _dbContext = dbContext;
         }
 
+
         private async void OnCreateAccountClicked(object sender, EventArgs e)
         {
             // Naviguer vers la page de création de compte

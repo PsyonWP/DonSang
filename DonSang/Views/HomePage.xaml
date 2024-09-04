@@ -4,6 +4,7 @@
              x:Class="DonSang.Views.HomePage"
              BackgroundColor="#FFFFFF" 
              Title="Questionnaire dons du sang">
+             
 
     <ContentPage.Content>
         <Grid VerticalOptions="CenterAndExpand" Padding="20">
